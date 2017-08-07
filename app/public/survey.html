@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Personality Questionnaire</title>
+
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1 class="text-center"> Friend Survey</h1>
+            <br>
+            <h2 class="text-center">TAKE SURVEY</h2>
+            <br>
+
+            <div class="text-center">
+                <a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!-- Questionnaire -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Personality Questionnaire</h4>
+                    </div>
+                    <div class="panel-body">
+
+                        <form role="form">
+                            <!--User would enter in values to survey questions here and values would push to friends.js-->
+
+
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/api/public/home">home</a> </a>></p>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+    $(".submit").on("click", function(event) {
+        event.preventDefault();
+
+        // Grab the quetionnaire values
+        var userVal = {
+            value: $("#quesionnaire").val().trim(),
+
+        };
+
+        console.log(userVal);
+
+
+        $.post("app/data/friends", userVal,
+            function(data) {
+
+                if (data) {
+                    alert("OMG! You found a new friend!");
+                } else {
+                    alert("Sorry you didn't answer enough questions");
+                }
+
+
+                $("#questionnaire").val("");
+
+
+            });
+
+    });
+</script>
