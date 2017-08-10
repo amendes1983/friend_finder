@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "find friendes",
     "main": "server.js",
-    "scripts": {
+    "script": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Aaron",
@@ -13,7 +13,7 @@
         "express": "^4.15.3",
         "path": "^0.12.7"
     },
-    "script": {
+    "scripts": {
         "start": "node server.js"
     }
 }
